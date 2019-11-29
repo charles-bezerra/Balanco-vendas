@@ -64,8 +64,15 @@ class App extends Component {
                   break;
         }
     }
+    
+    clearVendas(){
+        for(let i = 0; i < this.vendas.length; i++)
+            this.vendas[i] = 0;
+    }
 
     handleChange = (e) => {
+        this.clearVendas();
+
         for(let i = 0; i < data.vendas.length; i++){
             if(data.vendas[i].brand === e.target.value && e.target.name === "brands")
                 this.selectCountMont(data.vendas[i].month);

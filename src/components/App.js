@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from './header';
 import Graphics from "./graphics";
+//import ReactDOM from "react-dom";
 
 const data = require('./dados/dados.json');
 const user = require('./dados/usuario.json');
 
-const vendas = [0,0,0,0,0,0,0,0,0,0,0,0];
+var vendas = [0,0,0,0,0,0,0,0,0,0,0,0];
 
 const selectCountMont = (month) => {
     switch (month) {
@@ -55,37 +56,28 @@ class App extends React.Component {
 
     constructor(props){
         super(props);
+        this.handleChange = this.handleChange.bind(this);
         this.state = {value: <Graphics vendas={vendas} data={data} />};
     }
 
-    updateGraphics = () => {
-       this.setState({"value": <Graphics vendas={vendas} data={data} />});
-       console.log("Passa aqui");
-       
-    }
+    handleChange(e) {        
+        for(let i = 0; i < data.vendas.length; i++){
+            if(data.vendas[i].brand === e.target.value && e.target.name === "brands")
+                selectCountMont(data.vendas[i].month);
+            else if(data.vendas[i].product === e.target.value && e.target.name === "products")
+                selectCountMont(data.vendas[i].month);
+            else if(data.vendas[i].category === e.target.value && e.target.name === "categories")
+                selectCountMont(data.vendas[i].month);
+        }
 
-    changeGraphicsCategory = (event) => {
-        for(let i = 0; i < data.vendas.length; i++){
-            if(data.vendas[i].category === event.target.value)
-                selectCountMont(data.vendas[i].month);
-        } 
-        this.updateGraphics();       
-    }
+        this.setState({
+            value: <Graphics vendas={vendas} data={data} />,
+        });
 
-    changeGraphicsBrand = (event) => {
-        for(let i = 0; i < data.vendas.length; i++){
-            if(data.vendas[i].brand === event.target.value)
-                selectCountMont(data.vendas[i].month);
-        }        
-        this.updateGraphics();          
-    }
-    
-    changeGraphicsProduct = (event) => {
-        for(let i = 0; i < data.vendas.length; i++){
-            if(data.vendas[i].product === event.target.value)
-                selectCountMont(data.vendas[i].month);
-        }        
-        this.updateGraphics();       
+        //ReactDOM.render(
+        //    <Graphics vendas={vendas} data={data} />,
+        //    document.getElementById('graphics')
+        //);
     }
 
     getOptions(options) {
@@ -118,7 +110,7 @@ class App extends React.Component {
                     <div className="col-4">
                         <div className="form-group">
                             Categoria
-                            <select  className="form-control" onChange={this.changeGraphicsCategory}>
+                            <select  className="form-control" name="categories" onChange={this.handleChange}>
                                 { this.getOptions(data.categories) }
                             </select>
                         </div>
@@ -127,7 +119,7 @@ class App extends React.Component {
                     <div className="col-4">
                         <div className="form-group">
                             Produtos
-                            <select  className="form-control" onChange={this.changeGraphicsProduct}>
+                            <select  className="form-control" name="products" onChange={this.handleChange}>
                                 { this.getOptions(data.products) }
                             </select>
                         </div>
@@ -136,7 +128,7 @@ class App extends React.Component {
                     <div className="col-4">
                         <div className="form-group">
                             Marcas
-                            <select  className="form-control" onChange={this.changeGraphicsBrand}>
+                            <select  className="form-control" name="brands" onChange={this.handleChange}>
                                 { this.getOptions(data.brands) }
                             </select>
                         </div>

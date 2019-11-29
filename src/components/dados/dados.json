@@ -62,61 +62,61 @@
             "month": "January",
             "product": "Produto 1.1",
             "category": "Roupa",
-            "brand": "Marca 1"
+            "brand": "marca 1"
         },
         {
             "month": "January",
             "product": "Produto 1.1",
             "category": "Roupa",
-            "brand": "Marca 1"
+            "brand": "marca 1"
         },
         {
             "month": "February",
             "product": "Produto 1.1",
             "category": "Roupa",
-            "brand": "Marca 1"
+            "brand": "marca 1"
         },
         {
             "month": "February",
             "product": "Produto 1.1",
             "category": "Roupa",
-            "brand": "Marca 1"
+            "brand": "marca 1"
         },
         {
             "month": "March",
             "product": "Produto 1.1",
             "category": "Roupa",
-            "brand": "Marca 1"
+            "brand": "marca 1"
         },
         {
             "month": "March",
             "product": "Produto 2.1",
             "category": "Descoração",
-            "brand": "Marca 1"
+            "brand": "marca 1"
         },
         {
             "month": "January",
             "product": "Produto 2.1",
             "category": "Descoração",
-            "brand": "Marca 2"
+            "brand": "marca 2"
         },
         {
             "month": "January",
             "product": "Produto 2.1",
             "category": "Descoração",
-            "brand": "Marca 2"
+            "brand": "marca 2"
         },
         {
             "month": "November",
             "product": "Produto 2.1",
             "category": "Descoração",
-            "brand": "Marca 2"
+            "brand": "marca 2"
         },
         {
             "month": "November",
             "product": "Produto 3.1",
             "category": "Acessórios",
-            "brand": "Marca 3"
+            "brand": "marca 3"
         }
     ]
 }

@@ -8,85 +8,78 @@ import Graphics from "./graphics";
 const data = require('./dados/dados.json');
 const user = require('./dados/usuario.json');
 
-var vendas = [0,0,0,0,0,0,0,0,0,0,0,0];
+class App extends Component {
+    vendas = [0,0,0,0,0,0,0,0,0,0,0,0];
 
-const selectCountMont = (month) => {
-    switch (month) {
+    constructor(props){
+        super(props);
+        this.state = {         
+            vendas: this.vendas,
+            months: data.months,
+            testes: 0 
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    selectCountMont = (month) => {
+        switch (month) {
                 case "January":
-                  vendas[0]+=1;
+                  this.vendas[0]+=1;
                   break;
                 case "February":
-                  vendas[1]+=1;
+                  this.vendas[1]+=1;
                   break;
                 case "March":
-                 vendas[2]+=1;
+                 this.vendas[2]+=1;
                   break;
                 case "April":
-                 vendas[3]+=1;
+                 this.vendas[3]+=1;
                   break;
                 case "May":
-                 vendas[4]+=1;
+                 this.vendas[4]+=1;
                   break;
                 case "June":
-                 vendas[5]+=1;
+                 this.vendas[5]+=1;
                   break;
                 case "July":
-                 vendas[6]+=1;
+                 this.vendas[6]+=1;
                   break;
                 case "August":
-                 vendas[7]+=1;
+                 this.vendas[7]+=1;
                   break;
                 case "September":
-                 vendas[8]+=1;
+                 this.vendas[8]+=1;
                   break;
                 case "Octupber":
-                 vendas[9]+=1;
+                 this.vendas[9]+=1;
                   break;
                 case "December":
-                 vendas[10]+=1;
+                 this.vendas[10]+=1;
                   break;
                 case "November":
-                 vendas[11]+=1;
+                 this.vendas[11]+=1;
                   break;
 
                 default:
                   break;
-    }
-}
-
-class App extends Component {
-    state = {
-        value: <Graphics vendas={vendas} data={data} />
+        }
     }
 
-    componentWillMount() {
-        this.setState({value: this.props.value})
-    }
-
-    constructor(props){
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.state = {value: <Graphics vendas={vendas} data={data} />};
-    }
-
-    handleChange = (e) => {        
+    handleChange = (e) => {
         for(let i = 0; i < data.vendas.length; i++){
             if(data.vendas[i].brand === e.target.value && e.target.name === "brands")
-                selectCountMont(data.vendas[i].month);
+                this.selectCountMont(data.vendas[i].month);
             else if(data.vendas[i].product === e.target.value && e.target.name === "products")
-                selectCountMont(data.vendas[i].month);
+                this.selectCountMont(data.vendas[i].month);
             else if(data.vendas[i].category === e.target.value && e.target.name === "categories")
-                selectCountMont(data.vendas[i].month);
+                this.selectCountMont(data.vendas[i].month);
         }
 
         this.setState({
-            value: <Graphics vendas={vendas} data={data} />,
+            vendas: this.vendas,
+            months: data.months,
+            testes: this.state.testes+1             
         });
-
-        //ReactDOM.render(
-        //    <Graphics vendas={vendas} data={data} />,
-        //    document.getElementById('graphics')
-        //);
     }
 
     getOptions(options) {
@@ -110,7 +103,7 @@ class App extends Component {
         <div className="app">
             <Header user={user} />
 
-            <div className="p-4">
+            <div className="mt-5 pt-5 pr-5 pl-5">
                 <center>
                     <h2>Sales by month</h2>
                 </center>
@@ -145,8 +138,9 @@ class App extends Component {
                 </div>
             </div>
             
-            <div id="graphics" className="py-2 px-4 graphics">
-                { this.state.value }
+            <div id="graphics" className="px-4 graphics">
+                <Graphics vendas={this.state.vendas} months={this.state.months} />
+                { this.state.testes } 
             </div>
         </div>
       );

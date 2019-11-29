@@ -19,7 +19,7 @@ export default class Graphics extends Component{
 
     render() {
         return (
-            <div class="w-100">
+            <div className="w-100">
                 <Bar ref="chart" data={this.data} />
             </div>
         );

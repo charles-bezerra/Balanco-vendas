@@ -1,0 +1,122 @@
+{
+    "months": [
+        "January", 
+        "February", 
+        "March", 
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "Octupber",
+        "December",
+        "November"
+    ],
+
+    "categories": [
+        "Roupa",
+        "Descoração",
+        "Acessórios"
+    ],
+
+    "brands": [
+        "marca 1",
+        "marca 2",
+        "marca 3"
+    ],
+
+    "products": [
+        {
+            "name": "Produto 1.1",
+            "marca": "marca 1",
+            "category": "Roupa",
+            "descricao": "L"
+        },
+        
+        {
+            "name": "Produto 1.2",
+            "marca": "marca 1",
+            "category": "Roupa",
+            "descricao": "L"
+        },
+
+        {
+            "name": "Produto 2.1",
+            "marca": "marca 2",
+            "category": "Descoração",
+            "descricao": "L"
+        },
+        
+        {
+            "name": "Produto 3.1",
+            "marca": "marca 3",
+            "category": "Acessórios",
+            "descricao": "L"
+        }
+    ],
+
+
+    "vendas": [
+        {
+            "month": "January",
+            "product": "Produto 1.1",
+            "category": "Roupa",
+            "brand": "Marca 1"
+        },
+        {
+            "month": "January",
+            "product": "Produto 1.1",
+            "category": "Roupa",
+            "brand": "Marca 1"
+        },
+        {
+            "month": "February",
+            "product": "Produto 1.1",
+            "category": "Roupa",
+            "brand": "Marca 1"
+        },
+        {
+            "month": "February",
+            "product": "Produto 1.1",
+            "category": "Roupa",
+            "brand": "Marca 1"
+        },
+        {
+            "month": "March",
+            "product": "Produto 1.1",
+            "category": "Roupa",
+            "brand": "Marca 1"
+        },
+        {
+            "month": "March",
+            "product": "Produto 2.1",
+            "category": "Descoração",
+            "brand": "Marca 1"
+        },
+        {
+            "month": "January",
+            "product": "Produto 2.1",
+            "category": "Descoração",
+            "brand": "Marca 2"
+        },
+        {
+            "month": "January",
+            "product": "Produto 2.1",
+            "category": "Descoração",
+            "brand": "Marca 2"
+        },
+        {
+            "month": "November",
+            "product": "Produto 2.1",
+            "category": "Descoração",
+            "brand": "Marca 2"
+        },
+        {
+            "month": "November",
+            "product": "Produto 3.1",
+            "category": "Acessórios",
+            "brand": "Marca 3"
+        }
+    ]
+}

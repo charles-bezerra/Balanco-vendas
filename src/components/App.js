@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Header from './header';
 import Graphics from "./graphics";
 //import ReactDOM from "react-dom";
@@ -52,7 +54,14 @@ const selectCountMont = (month) => {
     }
 }
 
-class App extends React.Component {
+class App extends Component {
+    state = {
+        value: <Graphics vendas={vendas} data={data} />
+    }
+
+    componentWillMount() {
+        this.setState({value: this.props.value})
+    }
 
     constructor(props){
         super(props);
@@ -60,7 +69,7 @@ class App extends React.Component {
         this.state = {value: <Graphics vendas={vendas} data={data} />};
     }
 
-    handleChange(e) {        
+    handleChange = (e) => {        
         for(let i = 0; i < data.vendas.length; i++){
             if(data.vendas[i].brand === e.target.value && e.target.name === "brands")
                 selectCountMont(data.vendas[i].month);
@@ -142,6 +151,10 @@ class App extends React.Component {
         </div>
       );
     }
+}
+
+App.propTypes = {
+    value: PropTypes.any
 }
 
 export default App;

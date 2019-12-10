@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
-import Header from './header';
-import Graphics from "./graphics";
-//import ReactDOM from "react-dom";
+import Header from './components/header';
+import Graphics from './components/graphics';
+import Select from './components/select';
 
 const data = require('./dados/dados.json');
-const user = require('./dados/usuario.json');
 
 class App extends Component {
     vendas = [0,0,0,0,0,0,0,0,0,0,0,0];
@@ -16,7 +14,6 @@ class App extends Component {
         this.state = {         
             vendas: this.vendas,
             months: data.months,
-            testes: 0 
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -85,77 +82,63 @@ class App extends Component {
         this.setState({
             vendas: this.vendas,
             months: data.months,
-            testes: this.state.testes+1             
         });
-    }
-
-    getOptions(options) {
-         let children = [];
-         let myOptions = options;
-         let option = null;
-         for(let i = 0; i < myOptions.length; i++){
-            option = myOptions[i];
-            if (typeof option == 'object'){
-                 children.push( <option key={i} value={ option.name }>{option.name}</option> );
-            }
-            else{
-                children.push( <option key={i} value={ option }>{ option }</option> );                         
-            }
-         }
-         return children;
     }
 
     render() {
       return (
         <div className="app">
-            <Header user={user} />
-
+            <Header />
+        
             <div className="mt-5 pt-5 pr-5 pl-5">
+        
                 <center>
                     <h2>Sales by month</h2>
                 </center>
-
+        
                 <div className="row w-100">
                     <div className="col-4">
-                        <div className="form-group">
-                            Categoria
-                            <select  className="form-control" name="categories" onChange={this.handleChange}>
-                                { this.getOptions(data.categories) }
-                            </select>
-                        </div>
+                        <Select 
+                            title="Categoria" 
+                            name="categories" 
+                            options={data.categories}  
+                            onChange={ this.handleChange.bind(this) }
+                        />
                     </div>
-                    
+                        
                     <div className="col-4">
-                        <div className="form-group">
-                            Produtos
-                            <select  className="form-control" name="products" onChange={this.handleChange}>
-                                { this.getOptions(data.products) }
-                            </select>
-                        </div>
+                        <Select 
+                            title="Produtos" 
+                            name="products" 
+                            options={ data.products } 
+                            onChange={ this.handleChange.bind(this)} 
+                        />
                     </div>
-                    
+                        
                     <div className="col-4">
-                        <div className="form-group">
-                            Marcas
-                            <select  className="form-control" name="brands" onChange={this.handleChange}>
-                                { this.getOptions(data.brands) }
-                            </select>
-                        </div>
+                        <Select 
+                            title="Marcas" 
+                            name="brands" 
+                            options={ data.brands } 
+                            onChange={ this.handleChange.bind(this) }
+                        />
                     </div>
+
                 </div>
             </div>
-            
+
+
             <div id="graphics" className="px-4 graphics">
-                <Graphics vendas={this.state.vendas} months={this.state.months} />
-                { this.state.testes } 
+                <Graphics 
+                    vendas={ this.state.vendas } 
+                    months={ this.state.months } 
+                />
             </div>
-        </div>
+       
+       
+         </div>
       );
     }
-}
-
-App.propTypes = {
-    value: PropTypes.any
 }
 
 export default App;

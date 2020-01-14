@@ -13,7 +13,6 @@ export default class Graphics extends Component{
             {
                 label: 'Vendas',
                 fills: true,
-                height: "500px",
                 responsive: true,
                 backgroundColor: 'rgba(75,192,192,1)',
                 hoverBackgroundColor: 'rgba(75,192,192,201)',
@@ -53,7 +52,10 @@ export default class Graphics extends Component{
     render() {
         return (
             <div className="w-100">
-                <canvas ref={this.chartRef} />
+                <canvas height="100%" ref={this.chartRef} />
+                <div>
+                    kmvsdkmdklvdmkslvmdsklvmdlksmvdsklmvdslk    
+                </div> 
             </div>
         );
     }

@@ -13,9 +13,10 @@ class App extends Component {
         super(props);
         this.state = {         
             vendas: this.vendas,
-            months: data.months,
-        }
-        this.handleChange = this.handleChange.bind(this);
+            months: data.months, }
+        this.handleChange = this
+                            .handleChange
+                            .bind(this);
     }
 
     selectCountMont = (month) => {

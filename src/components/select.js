@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
 
 export default class Select extends Component {
+
     renderOptions(options) {
          let children = [];
          let myOptions = options;
          let option = null;
 
+         children.push(
+             <option key={0} value={""}>Selecione</option>
+         );
+
          for(let i = 0; i < myOptions.length; i++){
             option = myOptions[i];
-            if (typeof option == 'object'){
-                 children.push( <option key={i} value={ option.name }>{option.name}</option> );
-            }
-            else{
-                children.push( <option key={i} value={ option }>{ option }</option> );                         
-            }
+            if (typeof option == 'object')
+                 children.push( 
+                    <option key={i+1} value={ option.name }>
+                        { option.name }
+                    </option> 
+                 );
+
+            else
+                children.push( 
+                    <option key={i+1} value={ option }>
+                        { option }
+                    </option> );                         
          }
 
          return children;
@@ -27,7 +38,9 @@ export default class Select extends Component {
                     className="form-control" 
                     name={ this.props.name } 
                     onChange={ this.props.onChange } >
+                
                     { this.renderOptions(this.props.options) }
+                
                 </select>
             </div>
         );

@@ -11,12 +11,12 @@ export default class Graphics extends Component{
         labels: this.props.months,
         datasets: [
             {
-                label: 'Vendas',
+                label: 'sales',
                 fills: true,
                 responsive: true,
                 backgroundColor: 'rgba(75,192,192,1)',
                 hoverBackgroundColor: 'rgba(75,192,192,201)',
-                data: this.props.vendas
+                data: this.props.sales
             }
         ]
     }
@@ -30,13 +30,13 @@ export default class Graphics extends Component{
                 labels: this.props.months,
                 datasets: [
                     {
-                        label: 'Vendas',
+                        label: 'Sales',
                         fills: true,
                         height: "500px",
                         responsive: true,
                         backgroundColor: 'rgba(75,192,192,1)',
                         hoverBackgroundColor: 'rgba(75,192,192,201)',
-                        data: this.props.vendas
+                        data: this.props.sales
                     }
                 ]
             }
@@ -45,7 +45,7 @@ export default class Graphics extends Component{
 
     componentDidUpdate() {
         this.myChart.data.labels = this.props.months;
-        this.myChart.data.datasets[0].data = this.props.vendas;
+        this.myChart.data.datasets[0].data = this.props.sales;
         this.myChart.update();
     }
 
@@ -53,9 +53,6 @@ export default class Graphics extends Component{
         return (
             <div className="w-100">
                 <canvas height="100%" ref={this.chartRef} />
-                <div>
-                    kmvsdkmdklvdmkslvmdsklvmdlksmvdsklmvdslk    
-                </div> 
             </div>
         );
     }

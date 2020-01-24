@@ -13,12 +13,12 @@ export default class Select extends Component {
 
          for(let i = 0; i < myOptions.length; i++){
             option = myOptions[i];
+            
             if (typeof option == 'object')
                  children.push( 
                     <option key={i+1} value={ option.name }>
                         { option.name }
-                    </option> 
-                 );
+                    </option> );
 
             else
                 children.push( 

@@ -4,7 +4,8 @@ import Header from './../components/header';
 import Graphics from './../components/graphics';
 import Select from './../components/select';
 
-const data = require('./../dados/dados.json');
+const data = require('./../data/bd');
+const user = require('./../data/user');
 let Sales = require('./../js/sales');
 
 export default class Dashboard extends Component {
@@ -27,7 +28,7 @@ export default class Dashboard extends Component {
     render() {
       return (
         <div className="app">
-            <Header />
+            <Header name={user.name} />
         
             <div className="mt-5 p-4">
                 <center>

@@ -7,7 +7,7 @@ function Sales (data){
             return 0;
         });
     };
-
+    
     this.handleChange = (e) => {
         this.clearSales();
         this.countSales(e);

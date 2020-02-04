@@ -3,10 +3,10 @@ import React, {Component} from 'react';
 import Header from './../components/header';
 import Graphics from './../components/graphics';
 import Select from './../components/select';
+import Sales from './../js/sales';
 
 const data = require('./../data/bd');
 const user = require('./../data/user');
-let Sales = require('./../js/sales');
 
 export default class Dashboard extends Component {
 

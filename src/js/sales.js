@@ -1,15 +1,9 @@
 function Sales (data){
     this.data = data;
-    var monthSales = [0,0,0,0,0,0,0,0,0,0,0,0];
+    let monthSales = [0,0,0,0,0,0,0,0,0,0,0,0];
 
-    this.clearSales = () => {
-        monthSales.map(function(){
-            return 0;
-        });
-    };
-    
     this.handleChange = (e) => {
-        this.clearSales();
+        monthSales.map(() => { return 0; });
         this.countSales(e);
     };
 
@@ -18,14 +12,13 @@ function Sales (data){
     };
 
     this.countSales = (arg) => {
-        this.data.sales.map(function (e){
+        this.data.sales.forEach(function (e,i){
             if(arg.target.name === "categories" && e.category === arg.target.value)
                 monthSales[e.monthID-1] += 1;
             else if(arg.target.name === "brands" && e.brand === arg.target.value)
                 monthSales[e.monthID-1] += 1;
             else if(arg.target.name === "products" && e.product === arg.target.value)
                 monthSales[e.monthID-1] += 1;
-            return e;
         });
     };
 
@@ -34,4 +27,4 @@ function Sales (data){
     }
 }
 
-module.exports = Sales;
+export default Sales;

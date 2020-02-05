@@ -16,9 +16,11 @@ export default class Dashboard extends Component {
         this.state = {         
             sales: this.sales.getMonthSales(),
         };
+
+        this.handleChange = this.handleChange.bind(this);
     }   
 
-    handleChange = (e) => {
+    handleChange(e) {
         this.sales.handleChange(e);
         this.setState({         
             sales: this.sales.getMonthSales()
@@ -41,7 +43,7 @@ export default class Dashboard extends Component {
                             title="Categoria" 
                             name="categories" 
                             options={ data.categories }  
-                            onChange={ this.handleChange.bind(this) }
+                            onChange={this.handleChange}
                         />
                     </div>
                         
@@ -50,7 +52,7 @@ export default class Dashboard extends Component {
                             title="Produtos" 
                             name="products" 
                             options={ data.products } 
-                            onChange={ this.handleChange.bind(this)} 
+                            onChange={this.handleChange} 
                         />
                     </div>
                         
@@ -59,7 +61,7 @@ export default class Dashboard extends Component {
                             title="Marcas" 
                             name="brands" 
                             options={ data.brands } 
-                            onChange={ this.handleChange.bind(this) }
+                            onChange={this.handleChange}
                         />
                     </div>
 

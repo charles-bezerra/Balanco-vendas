@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import Header from './../components/header';
-import Graphics from './../components/graphics';
+import { Bar } from './../components/graphics';
 import Select from './../components/select';
 import Sales from './../js/sales';
 
@@ -9,21 +9,20 @@ const data = require('./../data/bd');
 const user = require('./../data/user');
 
 export default class Dashboard extends Component {
-
     constructor(props){
-        super(props);
+        super(props);     
         this.sales = new Sales(data);
-        this.state = {         
-            sales: this.sales.getMonthSales(),
+        
+        this.state = { 
+            sales: [] 
         };
 
         this.handleChange = this.handleChange.bind(this);
     }   
 
     handleChange(e) {
-        this.sales.handleChange(e);
         this.setState({         
-            sales: this.sales.getMonthSales()
+            sales: this.sales.handleChange(e)
         });
     }
 
@@ -33,17 +32,14 @@ export default class Dashboard extends Component {
             <Header name={user.name} />
         
             <div className="mt-5 p-4">
-                <center>
-                    <h4>Sales by month</h4>
-                </center>
-        
+            
                 <div className="row w-100">
                     <div className="col-4">
                         <Select 
                             title="Categoria" 
                             name="categories" 
                             options={ data.categories }  
-                            onChange={this.handleChange}
+                            onChange={ this.handleChange }
                         />
                     </div>
                         
@@ -52,7 +48,7 @@ export default class Dashboard extends Component {
                             title="Produtos" 
                             name="products" 
                             options={ data.products } 
-                            onChange={this.handleChange} 
+                            onChange={ this.handleChange } 
                         />
                     </div>
                         
@@ -61,7 +57,7 @@ export default class Dashboard extends Component {
                             title="Marcas" 
                             name="brands" 
                             options={ data.brands } 
-                            onChange={this.handleChange}
+                            onChange={ this.handleChange }
                         />
                     </div>
 
@@ -70,8 +66,8 @@ export default class Dashboard extends Component {
 
 
             <div id="graphics" className="px-4 graphics">
-                <Graphics 
-                    sales={ this.state.sales } 
+                <Bar
+                    data={ this.state.sales } 
                     months={ data.months } 
                 />
             </div>
